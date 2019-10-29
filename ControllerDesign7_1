@@ -1,0 +1,14 @@
+% w = logspace(-2,2,50);
+% mag = 20*log10(abs(1./(1+j*w)))
+% phase = -atan2(w, 1)*180/pi;
+% 
+% figure(1)
+% sys = tf(1, [1 1]);
+% bode(sys);
+% 
+% figure(2)
+% subplot(211), semilogx(w, mag), grid
+% subplot(212), semilogx(w, phase), grid
+
+sys = tf(100, [1 11 38 40]);
+bode(sys);
