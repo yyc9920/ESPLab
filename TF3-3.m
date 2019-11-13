@@ -18,14 +18,13 @@ axis([-1 1 -1 1]);
 [r1,p1,k1] = residue([1 -0.3],[1 0.3 0.36 0.108]);
 
 t = 1:1:20;
+impulse = t==0;
 x1 = 0;
 for i = 1:1:length(r1)
-    if i == 1
-        imp = 1;
-    else
-        imp = 0;
-    end
-    x1 = x1 + imp +  r1(i).*p1(i).^t;
+    for j=1:1:20
+        unitstep = t>=j;
+        x1(j) = x1(j) + r1(i).*p1(i)^t(j);
+    end;
 end
 
 stem(abs(x1));
