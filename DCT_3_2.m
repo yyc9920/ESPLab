@@ -1,0 +1,15 @@
+clear;
+clc;
+row = 256;
+col = 256;
+Z = myfun_LoadImage('lena.raw', row, col);
+Z_dct = dct2(Z);
+m1 = max(Z_dct);
+m2 = max(m1);
+Zd = (Z_dct/m2)*255;
+Z_idct = idct2(Z_dct);
+Z_idct = uint8(Z_idct);
+figure(1);
+imshow(Zd);
+figure(2);
+imshow(Z_idct);

@@ -1,0 +1,15 @@
+clear;
+clc;
+row = 256;
+col = 256;
+Z = myfun_LoadImage('lena.raw', row, col);
+Z_fft = fft2(Z);
+m1 = max(Z_fft);
+m2 = max(m1);
+Zf = (Z_fft/m2)*255;
+Z_ifft = ifft2(Z_fft);
+Z_ifft = uint8(Z_ifft);
+figure(1);
+imshow(abs(Zf));
+figure(2);
+imshow(Z_ifft);
